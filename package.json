@@ -1,0 +1,23 @@
+{
+  "name": "auto-ava-denali-node-deployment",
+  "version": "1.0.0",
+  "description": "This script is a community effort to facilitate the creation of AVA Nodes This script automates the steps of the following guide https://medium.com/@ablock.io/guide-launch-your-denali-node-with-aws-from-a-to-z-4a13ebac1466",
+  "main": "launch_node.js",
+  "dependencies": {
+    "request": "^2.88.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ablockio/Auto-AVA-Denali-node-deployment.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ablockio/Auto-AVA-Denali-node-deployment/issues"
+  },
+  "homepage": "https://github.com/ablockio/Auto-AVA-Denali-node-deployment#readme"
+}

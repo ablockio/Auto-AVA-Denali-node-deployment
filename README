@@ -1,0 +1,25 @@
+This script is a community effort to facilitate the creation of AVA Nodes
+This script automates the steps of the following guide https://medium.com/@ablock.io/guide-launch-your-denali-node-with-aws-from-a-to-z-4a13ebac1466
+
+Pre requisites :
+* Having a Ubuntu machine
+
+Process
+Launching a node and joining a subnet must follow these steps :
+- Installing dependencies and building AVA node  (script install_ava_node.sh)
+- Creating a Wallet and a User on AVA X Chain
+- Requesting Faucets tokens (can not be automated because of captcha)
+- Executing a serie of HTTP Calls to build subscribe to a subnet
+
+Detail of each script
+
+install_ava_node.sh
+Installing GO and dependencies
+Cloning Gecko
+Installing Nodejs 12.X
+Cloning ablock repository
+Building AVA Node
+Launching AVA Node in Production mode (with nohup)
+
+Launch command : in
+curl -s https://raw.githubusercontent.com/aorfevre/Auto-AVA-Denali-node-deployment/master/install_ava_node.sh | bash
