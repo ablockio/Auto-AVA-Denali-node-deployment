@@ -15,11 +15,11 @@ Launching a node and joining a subnet must follow these steps :
 Instructions
 1/ Connect to your VPS
 2/ launch the following command
-curl -s https://raw.githubusercontent.com/aorfevre/Auto-AVA-Denali-node-deployment/master/install_ava_node.sh | bash
+curl -s https://raw.githubusercontent.com/ablockio/Auto-AVA-Denali-node-deployment/master/install_ava_node.sh | bash
 3/ Once done, go to the cloned repository
 cd Auto-AVA-Denali-node-deployment
 4/ Update config.json file with your username and password
 5/ launch nodejs script
 node launch_node.js
 6/ When you are asked to go to the faucet, copy your X-Chain address to the faucet to credit 20000 nAVA tokens
-7/ Enjoy ;) 
+7/ Enjoy ;)
