@@ -84,7 +84,7 @@ async function nodeIsLaunchedProcess() {
   let pWalletResponse = await helper.createAddressPChain();
   d.pWalletResponse = pWalletResponse.body
 
-  console.log('X-Chain wallet created: ' + d.pWalletResponse.result.address)
+  console.log('P-Chain wallet created: ' + d.pWalletResponse.result.address)
 
   claimFaucet()
 }
