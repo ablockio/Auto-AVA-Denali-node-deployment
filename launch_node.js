@@ -39,14 +39,21 @@ async function start() {
 
   let keyStoreResponse = await helper.createKeystore();
 
-  d.keyStoreResponse = keyStoreResponse.body
-  // Check if success OR if already created
-  if ((d.keyStoreResponse.result !== undefined && d.keyStoreResponse.result.success !== undefined && d.keyStoreResponse.result.success === true) ||
-    (d.keyStoreResponse.error !== undefined && d.keyStoreResponse.error.code === -32000)
-  ) {
-    d.keyStoreResponse = keyStoreResponse
+  if (keyStoreResponse === undefined) {
+    console.log("Keystore NOT created.")
+    console.log("Your login / password is probably not strong enough")
+  } else {
+    console.log("Keystore Created")
+    d.keyStoreResponse = keyStoreResponse.body
+    // Check if success OR if already created
+    if ((d.keyStoreResponse.result !== undefined && d.keyStoreResponse.result.success !== undefined && d.keyStoreResponse.result.success === true) ||
+      (d.keyStoreResponse.error !== undefined && d.keyStoreResponse.error.code === -32000)
+    ) {
+      d.keyStoreResponse = keyStoreResponse
 
-    createWallet()
+      createWallet()
+
+    }
 
   }
 

@@ -26,7 +26,7 @@ module.exports.createKeystore = async function() {
         json: true,
       },
       (error, response, body) => {
-        console.log('Keystore created')
+
 
         resolve(response)
       })
