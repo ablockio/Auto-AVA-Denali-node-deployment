@@ -39,8 +39,33 @@ cd go/src/github.com/ava-labs/gecko
 echo '### Building AVA node...'
 ./scripts/build.sh
 
+echo '### Creating AVA node service...'
+sudo USER=$USER bash -c 'cat <<EOF > /etc/systemd/system/avanode.service
+[Unit]
+Description=AVA Node service
+After=network.target
+
+[Service]
+User=$USER
+Group=$USER
+
+WorkingDirectory=$HOME/go/src/github.com/ava-labs/gecko
+ExecStart=$HOME/go/src/github.com/ava-labs/gecko/build/ava
+
+Restart=always
+PrivateTmp=true
+TimeoutStopSec=60s
+TimeoutStartSec=10s
+StartLimitInterval=120s
+StartLimitBurst=5
+
+[Install]
+WantedBy=multi-user.target
+EOF'
+
 echo '### Launching AVA node...'
-nohup ./build/ava &
+sudo systemctl enable avanode
+sudo systemctl start avanode
 
 echo '### Cloning Script directory...'
 cd $HOME
