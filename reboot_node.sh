@@ -70,8 +70,9 @@ sudo systemctl start avanode
 echo 'Type the following command to monitor the AVA node service:'
 echo '    sudo systemctl status avanode'
 else
-sudo service supervisor stop
+
 sudo service supervisor start
+sudo supervisorctl stop avanode
 sudo supervisorctl start avanode
 echo 'Type the following command to monitor the AVA node service:'
 echo '    sudo supervisorctl status avanode'
