@@ -8,7 +8,7 @@ echo '### Stopping existing AVA node if launched manually ...'
 if [ ! -f "/etc/systemd/system/avanode.service" ]; then
 SYSTEMD_INSTALLED=1
 sudo systemctl stop avanode
-elseif [ ! -f "/etc/supervisor/conf.d/avanode.conf" ]; then
+elif [ ! -f "/etc/supervisor/conf.d/avanode.conf" ]; then
 sudo supervisorctl stop avanode
 else
 NOHUP_USED = 1
