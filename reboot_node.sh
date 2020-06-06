@@ -65,10 +65,12 @@ fi
 echo '### Launching AVA node...'
 if [ -n "$SYSTEMD_SUPPORTED" ]; then
 sudo systemctl enable avanode
+sudo systemctl stop avanode
 sudo systemctl start avanode
 echo 'Type the following command to monitor the AVA node service:'
 echo '    sudo systemctl status avanode'
 else
+sudo service supervisor stop
 sudo service supervisor start
 sudo supervisorctl start avanode
 echo 'Type the following command to monitor the AVA node service:'
