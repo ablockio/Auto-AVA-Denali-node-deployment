@@ -5,10 +5,10 @@
 # for https://www.avalabs.org/ Nodes
 #######################################
 echo '### Stopping existing AVA node if launched manually ...'
-if [ ! -f "/etc/systemd/system/avanode.service" ]; then
+if [  -f "/etc/systemd/system/avanode.service" ]; then
 SYSTEMD_INSTALLED=1
 sudo systemctl stop avanode
-elseif [ ! -f "/etc/supervisor/conf.d/avanode.conf" ]; then
+elif [  -f "/etc/supervisor/conf.d/avanode.conf" ]; then
 sudo supervisorctl stop avanode
 else
 NOHUP_USED = 1
@@ -26,8 +26,9 @@ else
 echo 'systemd is not available on this machine, will use supervisord instead'
 fi
 
+if [ -n "$NOHUP_USED" ]; then
 echo '### Creating AVA node service...'
-if [ -n "$SYSTEMD_SUPPORTED" ] && [ -n "$NOHUP_USED" ]; then
+if [ -n "$SYSTEMD_SUPPORTED" ]; then
 sudo USER=$USER bash -c 'cat <<EOF > /etc/systemd/system/avanode.service
 [Unit]
 Description=AVA Node service
@@ -69,7 +70,7 @@ stderr_logfile_maxbytes=10MB
 stderr_logfile_backups=1
 EOF'
 fi
-
+fi
 
 echo '### Launching AVA node...'
 if [ -n "$SYSTEMD_SUPPORTED" ]; then
