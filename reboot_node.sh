@@ -5,9 +5,18 @@
 # for https://www.avalabs.org/ Nodes
 #######################################
 echo '### Stopping existing AVA node if launched manually ...'
+if [ ! -f "/etc/systemd/system/avanode.service" ]; then
+SYSTEMD_INSTALLED=1
+sudo systemctl stop avanode
+elseif [ ! -f "/etc/supervisor/conf.d/avanode.conf" ]; then
+sudo supervisorctl stop avanode
+else
+NOHUP_USED = 1
 PID=`ps -ef | grep build/ava | grep root | tr -s ' ' | cut -d ' ' -f2`
 echo $PID
 sudo kill -9 $PID
+fi
+
 
 echo '### Checking if systemd is supported...'
 if systemctl show-environment &> /dev/null ; then
@@ -18,7 +27,7 @@ echo 'systemd is not available on this machine, will use supervisord instead'
 fi
 
 echo '### Creating AVA node service...'
-if [ -n "$SYSTEMD_SUPPORTED" ]; then
+if [ -n "$SYSTEMD_SUPPORTED" ] && [ -n "$NOHUP_USED" ]; then
 sudo USER=$USER bash -c 'cat <<EOF > /etc/systemd/system/avanode.service
 [Unit]
 Description=AVA Node service
@@ -65,14 +74,11 @@ fi
 echo '### Launching AVA node...'
 if [ -n "$SYSTEMD_SUPPORTED" ]; then
 sudo systemctl enable avanode
-sudo systemctl stop avanode
 sudo systemctl start avanode
 echo 'Type the following command to monitor the AVA node service:'
 echo '    sudo systemctl status avanode'
 else
-
 sudo service supervisor start
-sudo supervisorctl stop avanode
 sudo supervisorctl start avanode
 echo 'Type the following command to monitor the AVA node service:'
 echo '    sudo supervisorctl status avanode'
