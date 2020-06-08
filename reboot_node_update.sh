@@ -7,11 +7,14 @@
 echo '### Stopping existing AVA node if launched manually ...'
 if [  -f "/etc/systemd/system/avanode.service" ]; then
 SYSTEMD_INSTALLED=1
+echo '### systemd is used'
 sudo systemctl stop avanode
 elif [  -f "/etc/supervisor/conf.d/avanode.conf" ]; then
+echo '### supervisor is used'
 sudo supervisorctl stop avanode
 else
-NOHUP_USED = 1
+echo '### nohup is used'
+NOHUP_USED=1
 PID=`ps -ef | grep build/ava | grep root | tr -s ' ' | cut -d ' ' -f2`
 echo $PID
 sudo kill -9 $PID
