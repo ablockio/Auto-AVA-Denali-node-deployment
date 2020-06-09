@@ -77,9 +77,9 @@ fi
 
 
 echo '### Downloading latest version...'
-wget https://github.com/ava-labs/gecko/releases/download/v0.5.3/gecko-linux-0.5.3.tar.gz
-tar -xvf gecko-linux-0.5.3.tar.gz
-cd gecko-0.5.3
+wget https://github.com/ava-labs/gecko/releases/download/v0.5.4/gecko-linux-0.5.4.tar.gz
+tar -xvf gecko-linux-0.5.4.tar.gz
+cd gecko-0.5.4
 mv ava $HOME/go/src/github.com/ava-labs/gecko/build/
 mv plugins/evm $HOME/go/src/github.com/ava-labs/gecko/build/plugins
 
