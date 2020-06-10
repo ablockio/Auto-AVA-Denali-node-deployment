@@ -118,3 +118,11 @@ fi
 echo '### Checking AVA node version that is running...'
 cd $HOME/go/src/github.com/ava-labs/gecko/
 ./build/ava --version
+
+echo '### Your node id ...'
+curl -X POST --data '{
+    "jsonrpc": "2.0",
+    "method": "admin.getNodeID",
+    "params":{},
+    "id": 1
+}' -H 'content-type:application/json;' 127.0.0.1:9650/ext/admin
