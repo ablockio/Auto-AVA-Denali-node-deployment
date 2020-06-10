@@ -115,6 +115,6 @@ echo 'Type the following command to monitor the AVA node service:'
 echo '    sudo supervisorctl status avanode'
 fi
 
-echo '### Checking AVA node version that is running...'
+echo '### Checking AVA node version that is running....'
 cd $HOME/go/src/github.com/ava-labs/gecko/
 ./build/ava --version
