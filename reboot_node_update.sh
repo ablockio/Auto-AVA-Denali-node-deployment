@@ -94,7 +94,6 @@ cd gecko-$AVA_VERSION
 mv ava $HOME/go/src/github.com/ava-labs/gecko/build/
 mv plugins/evm $HOME/go/src/github.com/ava-labs/gecko/build/plugins
 
-
 echo '   _________   _________              ________  ___________ _______      _____  .____    .___ '
 echo '  /  _  \   \ /   /  _  \             \______ \ \_   _____/ \      \    /  _  \ |    |   |   |'
 echo ' /  /_\  \   Y   /  /_\  \    ______   |    |  \ |    __)_  /   |   \  /  /_\  \|    |   |   |'
@@ -115,3 +114,7 @@ sudo supervisorctl start avanode
 echo 'Type the following command to monitor the AVA node service:'
 echo '    sudo supervisorctl status avanode'
 fi
+
+echo '### Checking AVA node version that is running...'
+cd $HOME/go/src/github.com/ava-labs/gecko/
+./build/ava --version
