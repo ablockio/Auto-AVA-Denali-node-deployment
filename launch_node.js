@@ -63,7 +63,7 @@ async function createWallet() {
   console.log('## Creating your X-Chain wallet ...')
 
   let xWalletResponse = await helper.createAddressXChain();
-
+  console.log("xWalletResponse", xWalletResponse.statusCode)
   if (xWalletResponse.statusCode === 404) {
 
 

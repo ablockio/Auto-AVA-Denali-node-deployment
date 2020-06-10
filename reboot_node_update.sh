@@ -4,6 +4,17 @@
 # Bash script to install dependencies in UBUNTU
 # for https://www.avalabs.org/ Nodes
 #######################################
+echo '   _________   _________              ________  ___________ _______      _____  .____    .___ '
+echo '  /  _  \   \ /   /  _  \             \______ \ \_   _____/ \      \    /  _  \ |    |   |   |'
+echo ' /  /_\  \   Y   /  /_\  \    ______   |    |  \ |    __)_  /   |   \  /  /_\  \|    |   |   |'
+echo '/    |    \     /    |    \  /_____/   |    `   \|        \/    |    \/    |    \    |___|   |'
+echo '\____|__  /\___/\____|__  /           /_______  /_______  /\____|__  /\____|__  /_______ \___|'
+echo '        \/              \/ script powered by  \/ ablock \/         \/         \/        \/   '
+echo 'If you want to help us, contact us on contact@ablock.io'
+
+AVA_VERSION='0.5.5'
+echo '### Starting update of AVA Node to '$AVA_VERSION'...'
+
 echo '### Stopping existing AVA node if launched manually ...'
 if [  -f "/etc/systemd/system/avanode.service" ]; then
 SYSTEMD_INSTALLED=1
@@ -77,11 +88,20 @@ fi
 
 
 echo '### Downloading latest version...'
-wget https://github.com/ava-labs/gecko/releases/download/v0.5.4/gecko-linux-0.5.4.tar.gz
-tar -xvf gecko-linux-0.5.4.tar.gz
-cd gecko-0.5.4
+wget https://github.com/ava-labs/gecko/releases/download/v$AVA_VERSION/gecko-linux-$AVA_VERSION.tar.gz
+tar -xvf gecko-linux-$AVA_VERSION.tar.gz
+cd gecko-$AVA_VERSION
 mv ava $HOME/go/src/github.com/ava-labs/gecko/build/
 mv plugins/evm $HOME/go/src/github.com/ava-labs/gecko/build/plugins
+
+
+echo '   _________   _________              ________  ___________ _______      _____  .____    .___ '
+echo '  /  _  \   \ /   /  _  \             \______ \ \_   _____/ \      \    /  _  \ |    |   |   |'
+echo ' /  /_\  \   Y   /  /_\  \    ______   |    |  \ |    __)_  /   |   \  /  /_\  \|    |   |   |'
+echo '/    |    \     /    |    \  /_____/   |    `   \|        \/    |    \/    |    \    |___|   |'
+echo '\____|__  /\___/\____|__  /           /_______  /_______  /\____|__  /\____|__  /_______ \___|'
+echo '        \/              \/ script powered by  \/ ablock \/         \/         \/        \/   '
+echo 'If you want to help us, contact us on contact@ablock.io'
 
 echo '### Launching AVA node...'
 if [ -n "$SYSTEMD_SUPPORTED" ]; then
