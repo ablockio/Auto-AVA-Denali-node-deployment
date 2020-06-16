@@ -1,4 +1,7 @@
 {
   "username" : "myGreatUsernameForAvaByablock",
-  "password" : "myGreatAvaNodePwd!2020@ByAblock"
+  "password" : "myGreatAvaNodePwd!2020@ByAblock",
+  "nodeid":"NODEID",
+  "xchain": "XCHAIN WALLET",
+  "pchain": "PCHAINWALLET"
 }

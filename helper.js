@@ -322,6 +322,58 @@ module.exports.validation = async function(pchain) {
 
 }
 
+module.exports.unsignedNodeTxEndTime100Year = async function(node, pchain) {
+
+  return new Promise((resolve, reject) => {
+    var headersOpt = {
+      // "content-type": "application/json",
+    };
+
+    console.log('UNSIGNED QUERY');
+    console.log({
+      "jsonrpc": "2.0",
+      "method": "platform.addDefaultSubnetValidator",
+      "params": {
+        "id": node,
+        "payerNonce": 2,
+        "destination": pchain,
+        "startTime": Number((new Date(new Date().getTime() + 15 * 60000).getTime() / 1000).toFixed(0)),
+        "endTime": 1592265599,
+        "stakeAmount": 10000
+      },
+      "id": 1
+    })
+
+    var endTime = new Date();
+    endTime.setFullYear(endTime.getFullYear() + 100);
+
+    request({
+        method: 'post',
+        url: 'http://127.0.0.1:9650/ext/P',
+        body: {
+          "jsonrpc": "2.0",
+          "method": "platform.addDefaultSubnetValidator",
+          "params": {
+            "id": node,
+            "payerNonce": 2,
+            "destination": pchain,
+            "startTime": Number((new Date(new Date().getTime() + 15 * 60000).getTime() / 1000).toFixed(0)),
+            "endTime": Number((new Date(endTime).getTime() / 1000).toFixed(0)),
+            "stakeAmount": 10000
+          },
+          "id": 1
+        },
+
+        headers: headersOpt,
+        json: true,
+      },
+      (error, response, body) => {
+
+        resolve(response)
+      })
+  })
+
+}
 
 module.exports.unsignedNodeTx = async function(node, pchain) {
 
@@ -344,6 +396,7 @@ module.exports.unsignedNodeTx = async function(node, pchain) {
       },
       "id": 1
     })
+
     request({
         method: 'post',
         url: 'http://127.0.0.1:9650/ext/P',
