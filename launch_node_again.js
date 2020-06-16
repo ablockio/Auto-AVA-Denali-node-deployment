@@ -41,12 +41,14 @@ async function validation() {
   console.log('##  Creating unsigned transaction...')
 
   let unsigned = await helper.unsignedNodeTx(json.nodeid, json.pchain)
+  console.log("unsigned", unsigned)
   console.log('##  Signing unsigned transaction...')
   let signed = await helper.signTxPChain(unsigned.body.result.unsignedTx, json.pchain)
+  console.log("unsigned", signed)
   console.log('##  Issuing Transaction to P-Chain...')
   let issuePchain = await helper.issueTxPChainAdmin(signed.body.result.tx)
 
-
+  console.log("unsigned", issuePchain)
   console.log("  /$$$$$$  /$$    /$$  /$$$$$$                      /$$$$$$$  /$$$$$$$$ /$$   /$$  /$$$$$$  /$$       /$$$$$$");
   console.log(" /$$__  $$| $$   | $$ /$$__  $$                    | $$__  $$| $$_____/| $$$ | $$ /$$__  $$| $$      |_  $$_/");
   console.log("| $$  \\ $$| $$   | $$| $$  \\ $$                    | $$  \\ $$| $$      | $$$$| $$| $$  \\ $$| $$        | $$  ");

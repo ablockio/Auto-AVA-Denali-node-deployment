@@ -355,7 +355,7 @@ module.exports.unsignedNodeTxEndTime100Year = async function(node, pchain) {
           "method": "platform.addDefaultSubnetValidator",
           "params": {
             "id": node,
-            "payerNonce": 2,
+            "payerNonce": 3,
             "destination": pchain,
             "startTime": Number((new Date(new Date().getTime() + 15 * 60000).getTime() / 1000).toFixed(0)),
             "endTime": Number((new Date(endTime).getTime() / 1000).toFixed(0)),
